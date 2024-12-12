@@ -56,4 +56,13 @@ public class Seance {
     public void setNbPlaceAchat(LinkedList<Integer> nbPlaceAchat) {
         this.nbPlaceAchat = nbPlaceAchat;
     }
+
+    public boolean estComplete(Salle salle){
+        int nbPlace = salle.getNbDePlace();
+        if (nbPlace == this.nbPlaceAchat.size()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

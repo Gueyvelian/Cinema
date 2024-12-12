@@ -36,7 +36,24 @@ public class Cinema implements ICinema, IGestCinema{
 
     @Override
     public List<String> filmsAlAffiche() {
-        return List.of();
+        LinkedList<String> filmsALAfiche = new LinkedList<>();
+        for (int i = 0; i < this.seanceDeLaSemaine.size(); i++){
+            if (filmsALAfiche.isEmpty()){
+                filmsALAfiche.add(this.seanceDeLaSemaine.get(i).getFilm().getTitre());
+            }else{
+                boolean esqueJaiMonFilm = false;
+                for (int t = 0; t < filmsALAfiche.size(); t++){
+                    if (this.seanceDeLaSemaine.get(i).getFilm().getTitre().equals(this.filmsAlAffiche().get(i))){
+                        esqueJaiMonFilm = true;
+                    }
+                }
+                if (!esqueJaiMonFilm){
+                    filmsALAfiche.add(this.seanceDeLaSemaine.get(i).getFilm().getTitre());
+                }
+            }
+
+        }
+        return filmsALAfiche;
     }
 
     @Override
