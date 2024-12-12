@@ -63,7 +63,16 @@ public class Cinema implements ICinema, IGestCinema{
 
     @Override
     public void creerFilm(String titreFilm, String descriptif, String realisateur, int anee) {
-
+        boolean esqueJaiMonFilm = false;
+        for (int i = 0; i < this.toutLesFilm.size(); i++){
+            esqueJaiMonFilm = false;
+            if (this.toutLesFilm.get(i).getTitre().equals(titreFilm)){
+                esqueJaiMonFilm = true;
+            }
+        }
+        if (!esqueJaiMonFilm){
+            this.toutLesFilm.add(new Film(titreFilm, realisateur, anee, descriptif));
+        }
     }
 
     @Override
@@ -73,7 +82,7 @@ public class Cinema implements ICinema, IGestCinema{
 
     @Override
     public void nouvelleSemaine() {
-
+        seanceDeLaSemaine.clear();
     }
 
     @Override
